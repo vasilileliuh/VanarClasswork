@@ -7,7 +7,7 @@ public class Application {
 
 //        System.out.println("Route number = " + Bus.getRouteNumber());
 //        Bus.setRouteNumber(88);
-//        Bus.LEDPanel.showRoute();
+        Bus.LEDPanel.showRoute();
 //        System.out.println(Bus.getSeats());
 //        Bus.setSeats(3);
 //        System.out.println(Bus.getSeats());
@@ -20,7 +20,10 @@ public class Application {
 //        Bus.exitPassenger(2);
 //        System.out.println(Bus.getSeats());
 //        testCase1();
-        testVasili();
+        testCaseVasili();
+        testWheelsBasic();
+        testWheelsBasic2();
+
 
     }
 
@@ -35,7 +38,7 @@ public class Application {
         System.out.println(Bus.getSeats());
     }
 
-    public static void testVasili() {
+    public static void testCaseVasili() {
         Bus.setSeats(2);
         for (int i = 0; i < 45; i++) {
             Bus.enterPassenger(1);
@@ -63,5 +66,57 @@ public class Application {
         System.out.println(Bus.getSeats());
     }
 
+    static void testWheelsBasic() {
+        // 4 working wheels within parameters
+        Bus.Wheels.setWheelPSI(115, Bus.Wheels.FRONT_LEFT);
+        Bus.Wheels.setWheelPSI(115, Bus.Wheels.FRONT_RIGHT);
+        Bus.Wheels.setWheelPSI(100, Bus.Wheels.BACK_LEFT_PRIMARY);
+        Bus.Wheels.setWheelPSI(100, Bus.Wheels.BACK_RIGHT_PRIMARY);
+        Bus.Wheels.setWheelPSI(0, Bus.Wheels.BACK_LEFT_SECONDARY);
+        Bus.Wheels.setWheelPSI(0, Bus.Wheels.BACK_RIGHT_SECONDARY);
+
+        // Too many passengers
+        Bus.setSeats(40);
+        System.out.println(Bus.isGoodToGo());
+        // false
+
+        //less passengers
+        Bus.setSeats(29);
+        System.out.println(Bus.isGoodToGo());
+        //true
+
+        //pressurizing back wheels
+        Bus.Wheels.setWheelPSI(80, Bus.Wheels.BACK_LEFT_SECONDARY);
+        Bus.Wheels.setWheelPSI(80, Bus.Wheels.BACK_RIGHT_SECONDARY);
+
+        //full bus
+        Bus.setSeats(45);
+        System.out.println(Bus.isGoodToGo());
+        //true
+
+    }
+
+    static void testWheelsBasic2() {
+
+        // 4 working wheels within parameters
+        Bus.Wheels.setWheelPSI(115, Bus.Wheels.FRONT_LEFT);
+        Bus.Wheels.setWheelPSI(115, Bus.Wheels.FRONT_RIGHT);
+        Bus.Wheels.setWheelPSI(100, Bus.Wheels.BACK_LEFT_PRIMARY);
+        Bus.Wheels.setWheelPSI(100, Bus.Wheels.BACK_RIGHT_PRIMARY);
+        Bus.Wheels.setWheelPSI(0, Bus.Wheels.BACK_LEFT_SECONDARY);
+        Bus.Wheels.setWheelPSI(0, Bus.Wheels.BACK_RIGHT_SECONDARY);
+        System.out.println("Tyre 1 pressure = " + Bus.Wheels.getWheelPSI(1));
+        System.out.println("Tyre 2 pressure = " + Bus.Wheels.getWheelPSI(2));
+        System.out.println("Tyre 3 pressure = " + Bus.Wheels.getWheelPSI(3));
+        System.out.println("Tyre 4 pressure = " + Bus.Wheels.getWheelPSI(4));
+        System.out.println("Tyre 5 pressure = " + Bus.Wheels.getWheelPSI(5));
+        System.out.println("Tyre 6 pressure = " + Bus.Wheels.getWheelPSI(6));
+        System.out.println("Tyre 1 " + Bus.isTyrePressureOk(1, 95.0));
+        System.out.println("Tyre 2 " + Bus.isTyrePressureOk(2, 95.0));
+        System.out.println("Tyre 3 " + Bus.isTyrePressureOk(3, 95.0));
+        System.out.println("Tyre 4 " + Bus.isTyrePressureOk(4, 95.0));
+        System.out.println("Tyre 5 " + Bus.isTyrePressureOk(5, 95.0));
+        System.out.println("Tyre 6 " + Bus.isTyrePressureOk(6, 95.0));
+    }
 
 }
