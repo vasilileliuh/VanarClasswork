@@ -4,6 +4,7 @@ public class Bus {
 
     final static int MAX_SEATS = 45;
     final static int MIN_SEATS = 0;
+    final static int ONE_HUNDRED_PERCENT = 100;
 
     private static int routeNumber = 77;
     private static int seats = 0;
@@ -148,17 +149,17 @@ public class Bus {
 
     public static boolean isTyrePressureOk(int wheel, double minPercentPressure) {
         if (wheel == Wheels.FRONT_LEFT)
-            return Wheels.frontLeftPSI >= Wheels.FRONT_WHEEL_MAX_PRESSURE_PSI * minPercentPressure / 100;
+            return Wheels.frontLeftPSI >= Wheels.FRONT_WHEEL_MAX_PRESSURE_PSI * minPercentPressure / ONE_HUNDRED_PERCENT;
         else if (wheel == Wheels.FRONT_RIGHT)
-            return Wheels.frontRightPSI >= Wheels.FRONT_WHEEL_MAX_PRESSURE_PSI * minPercentPressure / 100;
+            return Wheels.frontRightPSI >= Wheels.FRONT_WHEEL_MAX_PRESSURE_PSI * minPercentPressure / ONE_HUNDRED_PERCENT;
         else if (wheel == Wheels.BACK_LEFT_PRIMARY)
-            return Wheels.backLeftPrimaryPSI >= Wheels.REAR_PRIMARY_WHEEL_MAX_PRESSURE_PSI * minPercentPressure / 100;
+            return Wheels.backLeftPrimaryPSI >= Wheels.REAR_PRIMARY_WHEEL_MAX_PRESSURE_PSI * minPercentPressure / ONE_HUNDRED_PERCENT;
         else if (wheel == Wheels.BACK_LEFT_SECONDARY)
-            return Wheels.backLeftSecondaryPSI >= Wheels.REAR_SECONDARY_WHEEL_MAX_PRESSURE_PSI * minPercentPressure / 100;
+            return Wheels.backLeftSecondaryPSI >= Wheels.REAR_SECONDARY_WHEEL_MAX_PRESSURE_PSI * minPercentPressure / ONE_HUNDRED_PERCENT;
         else if (wheel == Wheels.BACK_RIGHT_PRIMARY)
-            return Wheels.backRightPrimaryPSI >= Wheels.REAR_PRIMARY_WHEEL_MAX_PRESSURE_PSI * minPercentPressure / 100;
+            return Wheels.backRightPrimaryPSI >= Wheels.REAR_PRIMARY_WHEEL_MAX_PRESSURE_PSI * minPercentPressure / ONE_HUNDRED_PERCENT;
         else if (wheel == Wheels.BACK_RIGHT_SECONDARY)
-            return Wheels.backRightSecondaryPSI >= Wheels.REAR_SECONDARY_WHEEL_MAX_PRESSURE_PSI * minPercentPressure / 100;
+            return Wheels.backRightSecondaryPSI >= Wheels.REAR_SECONDARY_WHEEL_MAX_PRESSURE_PSI * minPercentPressure / ONE_HUNDRED_PERCENT;
         else
             return false;
 
