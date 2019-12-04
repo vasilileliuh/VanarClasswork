@@ -6,7 +6,7 @@ public class Application {
     public static void main(String[] args) {
 
 //        System.out.println("Route number = " + Bus.getRouteNumber());
-//        Bus.setRouteNumber(88);
+        Bus.setRouteNumber(88);
         Bus.LEDPanel.showRoute();
 //        System.out.println(Bus.getSeats());
 //        Bus.setSeats(3);
@@ -19,7 +19,7 @@ public class Application {
 //        System.out.println(Bus.getSeats());
 //        Bus.exitPassenger(2);
 //        System.out.println(Bus.getSeats());
-//        testCase1();
+        testCase1();
         testCaseVasili();
         testWheelsBasic();
         testWheelsBasic2();
@@ -93,30 +93,32 @@ public class Application {
         Bus.setSeats(45);
         System.out.println(Bus.isGoodToGo());
         //true
+        System.out.println();
 
     }
 
     static void testWheelsBasic2() {
+        System.out.println("testWheelsBasic2 method");
 
-        // 4 working wheels within parameters
-        Bus.Wheels.setWheelPSI(115, Bus.Wheels.FRONT_LEFT);
-        Bus.Wheels.setWheelPSI(115, Bus.Wheels.FRONT_RIGHT);
-        Bus.Wheels.setWheelPSI(100, Bus.Wheels.BACK_LEFT_PRIMARY);
-        Bus.Wheels.setWheelPSI(100, Bus.Wheels.BACK_RIGHT_PRIMARY);
-        Bus.Wheels.setWheelPSI(0, Bus.Wheels.BACK_LEFT_SECONDARY);
-        Bus.Wheels.setWheelPSI(0, Bus.Wheels.BACK_RIGHT_SECONDARY);
-        System.out.println("Tyre 1 pressure = " + Bus.Wheels.getWheelPSI(1));
-        System.out.println("Tyre 2 pressure = " + Bus.Wheels.getWheelPSI(2));
-        System.out.println("Tyre 3 pressure = " + Bus.Wheels.getWheelPSI(3));
-        System.out.println("Tyre 4 pressure = " + Bus.Wheels.getWheelPSI(4));
-        System.out.println("Tyre 5 pressure = " + Bus.Wheels.getWheelPSI(5));
-        System.out.println("Tyre 6 pressure = " + Bus.Wheels.getWheelPSI(6));
-        System.out.println("Tyre 1 " + Bus.isTyrePressureOk(1, 95.0));
-        System.out.println("Tyre 2 " + Bus.isTyrePressureOk(2, 95.0));
-        System.out.println("Tyre 3 " + Bus.isTyrePressureOk(3, 95.0));
-        System.out.println("Tyre 4 " + Bus.isTyrePressureOk(4, 95.0));
-        System.out.println("Tyre 5 " + Bus.isTyrePressureOk(5, 95.0));
-        System.out.println("Tyre 6 " + Bus.isTyrePressureOk(6, 95.0));
+        // 3 working wheels within parameters
+        Bus.Wheels.setWheelPSI(114, Bus.Wheels.FRONT_LEFT);
+        Bus.Wheels.setWheelPSI(113, Bus.Wheels.FRONT_RIGHT);
+        Bus.Wheels.setWheelPSI(95, Bus.Wheels.BACK_LEFT_PRIMARY);
+        Bus.Wheels.setWheelPSI(75, Bus.Wheels.BACK_LEFT_SECONDARY);
+        Bus.Wheels.setWheelPSI(94, Bus.Wheels.BACK_RIGHT_PRIMARY);
+        Bus.Wheels.setWheelPSI(76, Bus.Wheels.BACK_RIGHT_SECONDARY);
+        System.out.println("Tyre 1 pressure = " + Bus.Wheels.getWheelPSI(Bus.Wheels.FRONT_LEFT));
+        System.out.println("Tyre 2 pressure = " + Bus.Wheels.getWheelPSI(Bus.Wheels.FRONT_RIGHT));
+        System.out.println("Tyre 3 pressure = " + Bus.Wheels.getWheelPSI(Bus.Wheels.BACK_LEFT_PRIMARY));
+        System.out.println("Tyre 4 pressure = " + Bus.Wheels.getWheelPSI(Bus.Wheels.BACK_LEFT_SECONDARY));
+        System.out.println("Tyre 5 pressure = " + Bus.Wheels.getWheelPSI(Bus.Wheels.BACK_RIGHT_PRIMARY));
+        System.out.println("Tyre 6 pressure = " + Bus.Wheels.getWheelPSI(Bus.Wheels.BACK_RIGHT_SECONDARY));
+        System.out.printf("Is tyre 1 pressure within 95%% of %.0f PSI = %b%n", Bus.Wheels.FRONT_WHEEL_MAX_PRESSURE_PSI, Bus.isTyrePressureOk(Bus.Wheels.FRONT_LEFT, Bus.getMinPermittedPercentPressureAnyWheel()));
+        System.out.printf("Is tyre 2 pressure within 95%% of %.0f PSI = %b%n", Bus.Wheels.FRONT_WHEEL_MAX_PRESSURE_PSI, Bus.isTyrePressureOk(Bus.Wheels.FRONT_RIGHT, Bus.getMinPermittedPercentPressureAnyWheel()));
+        System.out.printf("Is tyre 3 pressure within 95%% of %.0f PSI = %b%n", Bus.Wheels.REAR_PRIMARY_WHEEL_MAX_PRESSURE_PSI, Bus.isTyrePressureOk(Bus.Wheels.BACK_LEFT_PRIMARY, Bus.getMinPermittedPercentPressureAnyWheel()));
+        System.out.printf("Is tyre 4 pressure within 95%% of %.0f PSI = %b%n", Bus.Wheels.REAR_SECONDARY_WHEEL_MAX_PRESSURE_PSI, Bus.isTyrePressureOk(Bus.Wheels.BACK_LEFT_SECONDARY, Bus.getMinPermittedPercentPressureAnyWheel()));
+        System.out.printf("Is tyre 5 pressure within 95%% of %.0f PSI = %b%n", Bus.Wheels.REAR_PRIMARY_WHEEL_MAX_PRESSURE_PSI, Bus.isTyrePressureOk(Bus.Wheels.BACK_RIGHT_PRIMARY, Bus.getMinPermittedPercentPressureAnyWheel()));
+        System.out.printf("Is tyre 6 pressure within 95%% of %.0f PSI = %b%n", Bus.Wheels.REAR_SECONDARY_WHEEL_MAX_PRESSURE_PSI, Bus.isTyrePressureOk(Bus.Wheels.BACK_RIGHT_SECONDARY, Bus.getMinPermittedPercentPressureAnyWheel()));
     }
 
 }
