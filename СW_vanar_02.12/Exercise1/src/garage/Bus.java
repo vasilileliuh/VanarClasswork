@@ -144,31 +144,41 @@ public class Bus {
 
     public static boolean isGoodToGo() {
         if (seats >= 30)
-            return isTyrePressureOk(Wheels.FRONT_LEFT, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL) && isTyrePressureOk(Wheels.FRONT_RIGHT, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL)
-                    && isTyrePressureOk(Wheels.BACK_LEFT_PRIMARY, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL) && isTyrePressureOk(Wheels.BACK_LEFT_SECONDARY, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL)
-                    && isTyrePressureOk(Wheels.BACK_RIGHT_PRIMARY, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL) && isTyrePressureOk(Wheels.BACK_RIGHT_SECONDARY, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL);
+            return isTyrePressureOk(Wheels.FRONT_LEFT, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL) &&
+                    isTyrePressureOk(Wheels.FRONT_RIGHT, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL) &&
+                    isTyrePressureOk(Wheels.BACK_LEFT_PRIMARY, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL) &&
+                    isTyrePressureOk(Wheels.BACK_LEFT_SECONDARY, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL) &&
+                    isTyrePressureOk(Wheels.BACK_RIGHT_PRIMARY, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL) &&
+                    isTyrePressureOk(Wheels.BACK_RIGHT_SECONDARY, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL);
         else
-            return isTyrePressureOk(Wheels.FRONT_LEFT, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL) && isTyrePressureOk(Wheels.FRONT_RIGHT, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL) &&
-                    isTyrePressureOk(Wheels.BACK_LEFT_PRIMARY, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL) && isTyrePressureOk(Wheels.BACK_RIGHT_PRIMARY, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL);
+            return isTyrePressureOk(Wheels.FRONT_LEFT, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL) &&
+                    isTyrePressureOk(Wheels.FRONT_RIGHT, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL) &&
+                    isTyrePressureOk(Wheels.BACK_LEFT_PRIMARY, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL) &&
+                    isTyrePressureOk(Wheels.BACK_RIGHT_PRIMARY, Wheels.MIN_PERMITTED_PERCENT_PRESSURE_ANY_WHEEL);
 
     }
 
     public static boolean isTyrePressureOk(int wheel, double minPermittedPercentPressure) {
         if (wheel == Wheels.FRONT_LEFT)
-            return Wheels.frontLeftPSI >= Wheels.FRONT_WHEEL_MAX_PRESSURE_PSI * minPermittedPercentPressure / Wheels.ONE_HUNDRED_PERCENT;
+            return Wheels.frontLeftPSI >= Wheels.FRONT_WHEEL_MAX_PRESSURE_PSI *
+                    minPermittedPercentPressure / Wheels.ONE_HUNDRED_PERCENT;
         else if (wheel == Wheels.FRONT_RIGHT)
-            return Wheels.frontRightPSI >= Wheels.FRONT_WHEEL_MAX_PRESSURE_PSI * minPermittedPercentPressure / Wheels.ONE_HUNDRED_PERCENT;
+            return Wheels.frontRightPSI >= Wheels.FRONT_WHEEL_MAX_PRESSURE_PSI *
+                    minPermittedPercentPressure / Wheels.ONE_HUNDRED_PERCENT;
         else if (wheel == Wheels.BACK_LEFT_PRIMARY)
-            return Wheels.backLeftPrimaryPSI >= Wheels.REAR_PRIMARY_WHEEL_MAX_PRESSURE_PSI * minPermittedPercentPressure / Wheels.ONE_HUNDRED_PERCENT;
+            return Wheels.backLeftPrimaryPSI >= Wheels.REAR_PRIMARY_WHEEL_MAX_PRESSURE_PSI *
+                    minPermittedPercentPressure / Wheels.ONE_HUNDRED_PERCENT;
         else if (wheel == Wheels.BACK_LEFT_SECONDARY)
-            return Wheels.backLeftSecondaryPSI >= Wheels.REAR_SECONDARY_WHEEL_MAX_PRESSURE_PSI * minPermittedPercentPressure / Wheels.ONE_HUNDRED_PERCENT;
+            return Wheels.backLeftSecondaryPSI >= Wheels.REAR_SECONDARY_WHEEL_MAX_PRESSURE_PSI *
+                    minPermittedPercentPressure / Wheels.ONE_HUNDRED_PERCENT;
         else if (wheel == Wheels.BACK_RIGHT_PRIMARY)
-            return Wheels.backRightPrimaryPSI >= Wheels.REAR_PRIMARY_WHEEL_MAX_PRESSURE_PSI * minPermittedPercentPressure / Wheels.ONE_HUNDRED_PERCENT;
+            return Wheels.backRightPrimaryPSI >= Wheels.REAR_PRIMARY_WHEEL_MAX_PRESSURE_PSI *
+                    minPermittedPercentPressure / Wheels.ONE_HUNDRED_PERCENT;
         else if (wheel == Wheels.BACK_RIGHT_SECONDARY)
-            return Wheels.backRightSecondaryPSI >= Wheels.REAR_SECONDARY_WHEEL_MAX_PRESSURE_PSI * minPermittedPercentPressure / Wheels.ONE_HUNDRED_PERCENT;
+            return Wheels.backRightSecondaryPSI >= Wheels.REAR_SECONDARY_WHEEL_MAX_PRESSURE_PSI *
+                    minPermittedPercentPressure / Wheels.ONE_HUNDRED_PERCENT;
         else
             return false;
-
     }
 
 }
