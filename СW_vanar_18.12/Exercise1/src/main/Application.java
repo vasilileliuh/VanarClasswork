@@ -1,7 +1,6 @@
 package main;
 
-import arrays.IntegerArrayExample;
-import arrays.WeatherArrayExampleChisinauCity;
+import arrays.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,5 +17,14 @@ public class Application {
         WeatherArrayExampleChisinauCity.printPositiveValues();
         System.out.println();
         WeatherArrayExampleChisinauCity.printNegativeValues();
+
+        MiniMaxArrayExample.printMinValue();
+        MiniMaxArrayExample.printMaxValue();
+
+        MiniMaxArrayOfObjectsExample.printDrinks();
+
+        MiniMaxArrayOfObjectsExample.printMinValue();
+        MiniMaxArrayOfObjectsExample.printMaxValue();
+
     }
 }
