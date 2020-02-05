@@ -64,11 +64,11 @@ public class Application {
 
     public static void printList() {
         System.out.print("[" + catsNameList.size() + "]: ");
-        for (String name : catsNameList) {
-            if (catsNameList.size() - 1 == catsNameList.indexOf(name))
-                System.out.print("," + name);
+        for (String name : catsNameList)
+            System.out.print(catsNameList.indexOf(name) == 0 ? name : "," + name);
+        System.out.println();
 //            System.out.println(String.join(",", catsNameList));
-        }
+
 
     }
 
