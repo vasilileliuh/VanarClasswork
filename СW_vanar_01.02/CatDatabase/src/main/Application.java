@@ -1,5 +1,8 @@
 package main;
 
+import data.Cat;
+import data.FelineInterface;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +13,8 @@ import java.util.List;
 public class Application {
 
     private static List<String> catsNameList = new ArrayList<>();
+
+    static ArrayList<FelineInterface> felineList = new ArrayList<>();
 
 
     public static void main(String[] args) {
@@ -34,10 +39,14 @@ public class Application {
     public static void initGUI() {
         JButton saveBtn = new JButton("SAVE");
         JTextField nameInput = new JTextField();
+        JTextField raceInput = new JTextField();
+        JTextField yearInput = new JTextField();
 
         JFrame window = new JFrame("Cat Database App");
 
         window.getContentPane().add(nameInput);
+        window.getContentPane().add(raceInput);
+        window.getContentPane().add(yearInput);
         window.getContentPane().add(saveBtn);
         window.getContentPane().setLayout(new BoxLayout(window.getContentPane(), BoxLayout.PAGE_AXIS));
         window.setBounds(100, 100, 400, 300);
@@ -53,9 +62,13 @@ public class Application {
                 catsNameList.add(nameInput.getText());
 //                System.out.println(catsNameList.get(catsNameList.size() - 1));
 //                System.out.println("Cats in the collection= " + catsNameList.size());
-                printList();
+//                printList();
                 nameInput.setText("");
 
+                felineList.add(new Cat(catsNameList.get(catsNameList.size() - 1), raceInput.getText(), Integer.parseInt(yearInput.getText())));
+                printCatList();
+                raceInput.setText("");
+                yearInput.setText("");
             }
         });
 
@@ -68,8 +81,13 @@ public class Application {
             System.out.print(catsNameList.indexOf(name) == 0 ? name : "," + name);
         System.out.println();
 //            System.out.println(String.join(",", catsNameList));
+    }
 
-
+    public static void printCatList() {
+        System.out.print("[" + felineList.size() + "]: ");
+        for (FelineInterface cat : felineList)
+            System.out.println(felineList.indexOf(cat) == 0 ? cat.toString() : "     " + cat.toString());
+        System.out.println();
     }
 
 }
