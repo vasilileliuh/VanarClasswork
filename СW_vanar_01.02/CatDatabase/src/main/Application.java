@@ -64,8 +64,9 @@ public class Application {
 //                System.out.println("Cats in the collection= " + catsNameList.size());
 //                printList();
                 nameInput.setText("");
-
-                felineList.add(new Cat(catsNameList.get(catsNameList.size() - 1), raceInput.getText(), Integer.parseInt(yearInput.getText())));
+// костыль для ID
+                Integer id = 11;
+                felineList.add(new Cat(id += 11, catsNameList.get(catsNameList.size() - 1), raceInput.getText(), Integer.parseInt(yearInput.getText())));
                 printCatList();
                 raceInput.setText("");
                 yearInput.setText("");

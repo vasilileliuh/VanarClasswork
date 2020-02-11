@@ -1,11 +1,13 @@
 package data;
 
-public class Cat implements FelineInterface{
+public class Cat implements FelineInterface {
     private String name;
     private String race;
     private int year;
+    private Integer id;
 
-    public Cat(String name, String race, int year) {
+    public Cat(Integer id, String name, String race, int year) {
+        this.id = id;
         this.name = name;
         this.race = race;
         this.year = year;
@@ -42,8 +44,19 @@ public class Cat implements FelineInterface{
     }
 
     @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Override
     public String toString() {
         return "Cat{" +
+                "ID='" + id + '\'' +
                 "name='" + name + '\'' +
                 ", race='" + race + '\'' +
                 ", year=" + year +

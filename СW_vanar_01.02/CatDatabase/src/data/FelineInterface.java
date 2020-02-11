@@ -13,4 +13,8 @@ public interface FelineInterface {
     void setYear(int year);
 
     int getYear();
+
+    void setId(Integer id);
+
+    Integer getId();
 }
