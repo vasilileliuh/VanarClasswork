@@ -1,6 +1,8 @@
 package data;
 
-public class Cat implements FelineInterface {
+import java.io.*;
+
+public class Cat implements FelineInterface, Serializable {
     private String name;
     private String race;
     private int year;
@@ -51,6 +53,42 @@ public class Cat implements FelineInterface {
     @Override
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public Cat clone() {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream ous = null;
+        try {
+            ous = new ObjectOutputStream(baos);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //сохраняем состояние кота Васьки в поток и закрываем его(поток)
+        try {
+            ous.writeObject(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            ous.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+        ObjectInputStream ois = null;
+        try {
+            ois = new ObjectInputStream(bais);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //создаём кота для опытов и инициализируем его состояние Васькиным
+        try {
+            return (Cat) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

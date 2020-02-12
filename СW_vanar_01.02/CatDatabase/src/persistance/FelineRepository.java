@@ -29,32 +29,42 @@ public class FelineRepository implements FelineRepositoryInterface {
     }
 
     @Override
-    public List<FelineInterface> all() {
-        return felines;
+    public List<FelineInterface> findAll() {
+        ArrayList<FelineInterface> cloneFelines = new ArrayList<>();
+        for (FelineInterface feline : felines) {
+            Cat cat = (Cat) feline;
+            cloneFelines.add(cat.clone());
+        }
+        return cloneFelines;
     }
 
     @Override
-    public FelineInterface get(Integer id) {
-        for (FelineInterface f : felines) {
-            if (f.getId().equals(id)) {
-                return f;
+    public FelineInterface findById(Integer id) {
+        for (FelineInterface feline : felines) {
+            if (feline.getId().equals(id)) {
+                Cat cat = (Cat) feline;
+                return cat.clone();
             }
         }
         return null;
     }
 
-    public FelineInterface getByName(String name) {
+    public FelineInterface findByName(String name) {
         for (FelineInterface feline : felines) {
-            if (feline.getName().equals(name))
-                return feline;
+            if (feline.getName().equals(name)) {
+                Cat cat = (Cat) feline;
+                return cat.clone();
+            }
         }
         return null;
     }
 
-    public FelineInterface getByRace(String race) {
+    public FelineInterface findByRace(String race) {
         for (FelineInterface feline : felines) {
-            if (feline.getRace().equals(race))
-                return feline;
+            if (feline.getRace().equals(race)) {
+                Cat cat = (Cat) feline;
+                return cat.clone();
+            }
         }
         return null;
     }
