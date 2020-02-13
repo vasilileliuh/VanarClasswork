@@ -15,7 +15,9 @@ public class FelineRepository implements FelineRepositoryInterface {
 
     @Override
     public boolean save(FelineInterface feline) {
-        return false;
+        if (!update(feline))
+            felines.add(feline);
+        return true;
     }
 
     @Override
