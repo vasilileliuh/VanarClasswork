@@ -25,6 +25,12 @@ public class FelineRepository implements FelineRepositoryInterface {
 
     @Override
     public boolean update(FelineInterface feline) {
+        for (FelineInterface oneFeline : felines) {
+            if (feline.getId().equals(oneFeline.getId())) {
+                felines.set(felines.indexOf(oneFeline), feline);
+                return true;
+            }
+        }
         return false;
     }
 

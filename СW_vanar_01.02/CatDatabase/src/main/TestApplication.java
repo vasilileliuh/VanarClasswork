@@ -16,6 +16,8 @@ public class TestApplication {
 
         FelineInterface cat = fr.findById(22);
         cat.setName("Masya");
+        System.out.println(cat + "\n");
+
 
         FelineInterface cat2 = (fr.findByName("Шурсик"));
         cat2.setYear(2050);
@@ -24,6 +26,9 @@ public class TestApplication {
         FelineInterface cat3 = (fr.findByRace("Британская"));
         cat3.setId(555);
         System.out.println("getByRace \"Британская\" method result(clone set wrong ID) \n" + cat3 + "\n");
+
+
+        System.out.println(cat.toString() + " update success = " + fr.update(cat) + "\n");
 
         for (FelineInterface f : fr.findAll()) {
             System.out.println(f);
