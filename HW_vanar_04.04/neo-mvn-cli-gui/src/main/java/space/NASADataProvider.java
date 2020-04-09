@@ -16,16 +16,15 @@ public class NASADataProvider {
     private final static String ACCESS_KEY = "O07j4jScumz9is0SsljvW1ORhEQ8l4W4RN9o6zca";
     private final static String NEO_ENDPOINT = "https://api.nasa.gov/neo/rest/v1/feed";
     private final static int ONE_MILLION = 1_000_000;
+    private final static int ONE = 1;
     private final static byte INDEX_ZERO = 0;
 
     public void getNeoAsteroids(String startDate, String endDate) throws IOException {
 // 1. connect to nasa API
         URL oracle = new URL(NEO_ENDPOINT + "?start_date=" + startDate + "&end_date=" + endDate + "&api_key=" + ACCESS_KEY);
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(oracle.openStream()));
+        BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
 // 2. read data
-        String stringData = "";
-        String inputLine;
+        String inputLine, stringData = "";
         while ((inputLine = in.readLine()) != null)
 //            System.out.println(inputLine.replace("}", "}\n"));
             stringData += inputLine;
@@ -36,8 +35,8 @@ public class NASADataProvider {
         final LocalDate endLocalDate = LocalDate.parse(endDate, dtf);
 
         Period period = Period.between(startLocalDate, endLocalDate);
-        int diff = period.getDays();
-        System.out.println("Period= " + (diff + 1) + " days");
+        int difference = period.getDays() + ONE;
+        System.out.println("Period= " + difference + " days");
 
         JSONObject data = new JSONObject(stringData);
         int count = data.getInt("element_count");
@@ -45,15 +44,14 @@ public class NASADataProvider {
 
         List<Asteroid> asteroids = new ArrayList<>();
         LocalDate day = startLocalDate;
-        for (int i = 0; i < diff + 1; i++) {
+        for (int i = 0; i < difference; i++) {
             int arrayLength = data.getJSONObject("near_earth_objects")
                     .getJSONArray(day.toString()).length();
             for (int j = 0; j < arrayLength; j++)
                 asteroids.add(new Asteroid(day, getMissDistance(data, day, j), getDiameter(data, day, j), getIsHazardous(data, day, j)));
-            day = day.plusDays(1);
+            day = day.plusDays(ONE);
         }
         printResult(asteroids);
-
     }
 
     private float getDiameter(JSONObject data, LocalDate date, int index) {
