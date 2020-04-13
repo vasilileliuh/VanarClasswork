@@ -1,5 +1,6 @@
 package space;
 
+import config.XMLConfigurationProvider;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -13,15 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NASADataProvider {
-    private final static String ACCESS_KEY = "O07j4jScumz9is0SsljvW1ORhEQ8l4W4RN9o6zca";
-    private final static String NEO_ENDPOINT = "https://api.nasa.gov/neo/rest/v1/feed";
+//    private final static String ACCESS_KEY = "O07j4jScumz9is0SsljvW1ORhEQ8l4W4RN9o6zca";
+//    private final static String NEO_ENDPOINT = "https://api.nasa.gov/neo/rest/v1/feed";
     private final static int ONE_MILLION = 1_000_000;
     private final static int ONE = 1;
     private final static byte INDEX_ZERO = 0;
 
     public void getNeoAsteroids(String startDate, String endDate) throws IOException {
 // 1. connect to nasa API
-        URL oracle = new URL(NEO_ENDPOINT + "?start_date=" + startDate + "&end_date=" + endDate + "&api_key=" + ACCESS_KEY);
+        URL oracle = new URL(XMLConfigurationProvider.getValue("url", "nasa.xml") + "?start_date=" + startDate + "&end_date=" + endDate + "&api_key=" + XMLConfigurationProvider.getValue("key", "nasa.xml"));
         BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
 // 2. read data
         String inputLine, stringData = "";

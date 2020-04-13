@@ -1,69 +1,34 @@
 package test;
 
-import org.json.JSONObject;
+import config.XMLConfigurationProvider;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
-import java.net.MalformedURLException;
+import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NASAProviderTest {
-    private final static int ELEMENT_COUNT = 82;
-
     @Test
-    void checkConnection() {
-
-        String readResult = readXMLFile();
-
-        String[] splitKeyValue = readResult.split("<apikey>|</apikey>");
-        String accessKey = splitKeyValue[1];
-        String endpointURL = Arrays.asList(readResult.split("<endpoint>|</endpoint>")).get(1);
-
-        String urlData = readURLAddress(endpointURL, accessKey);
-
-        JSONObject data = new JSONObject(urlData);
-        int count = data.getInt("element_count");
-        assertFalse(count != ELEMENT_COUNT, "File data mismatch");
+    void testConnection() throws Exception {
+        String accessKey = XMLConfigurationProvider.getValue("key", "nasa.xml");
+        String endpointURL = XMLConfigurationProvider.getValue("url", "nasa.xml");
+        testURL(endpointURL + accessKey);
     }
 
-    private static String readXMLFile() {
-        File file = new File("src\\main\\resources\\test.xml");
-        Scanner fileIn = null;
+    public void testURL(String endpointURL) throws Exception {
         try {
-            fileIn = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            fail("XML file not found");
-        }
-        String readResult = "";
-        while (fileIn.hasNextLine()) {
-            readResult += fileIn.nextLine();
-        }
-        return readResult;
-    }
+            URL url = new URL(endpointURL);
+            HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
+            urlConn.connect();
 
-    private static String readURLAddress(String endpointURL, String accessKey) {
-        URL oracle = null;
-        try {
-            oracle = new URL(endpointURL + accessKey);
-        } catch (MalformedURLException e) {
-            fail("No internet connection or wrong URL address");
-        }
-        BufferedReader in;
-        String data = "";
-        try {
-            in = new BufferedReader(new InputStreamReader(oracle.openStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                data += inputLine;
-            in.close();
+            assertEquals(HttpURLConnection.HTTP_OK, urlConn.getResponseCode());
         } catch (IOException e) {
+            System.err.println("Error creating HTTP connection");
             e.printStackTrace();
+            throw e;
         }
-        return data;
     }
 }
 

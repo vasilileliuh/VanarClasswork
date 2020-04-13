@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
-    <endpoint>https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-02-07&api_key=</endpoint>
-    <apikey>DEMO_KEY</apikey>
-</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connection>
+    <key value="O07j4jScumz9is0SsljvW1ORhEQ8l4W4RN9o6zca"/>
+    <url value="https://api.nasa.gov/neo/rest/v1/feed"/>
+</connection>
