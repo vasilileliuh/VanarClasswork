@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="427.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainController">
+    <children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="322.0" prefWidth="694.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Button alignment="CENTER" layoutX="527.0" layoutY="385.0" mnemonicParsing="false" onAction="#getData"
+                        prefHeight="26.0" prefWidth="134.0" text="Get data"/>
+                <TextField fx:id="startDateInput" layoutX="15.0" layoutY="385.0" prefHeight="26.0" prefWidth="134.0"
+                           promptText="start date"/>
+                <TextField fx:id="endDateInput" layoutX="166.0" layoutY="385.0" prefHeight="26.0" prefWidth="134.0"
+                           promptText="end date"/>
+                <TextArea fx:id="textArea" layoutX="15.0" layoutY="14.0" prefHeight="355.0" prefWidth="647.0">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </TextArea>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
