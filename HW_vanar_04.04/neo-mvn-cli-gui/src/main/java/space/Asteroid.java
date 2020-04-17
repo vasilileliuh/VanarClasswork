@@ -1,6 +1,7 @@
 package space;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Asteroid {
     private LocalDate date;
@@ -30,6 +31,8 @@ public class Asteroid {
     public Boolean getHazardous() {
         return hazardous;
     }
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 
     @Override
     public String toString() {

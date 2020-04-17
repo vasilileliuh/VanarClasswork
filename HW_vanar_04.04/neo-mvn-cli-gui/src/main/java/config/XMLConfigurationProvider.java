@@ -24,7 +24,6 @@ public class XMLConfigurationProvider {
             Node key = xmlDoc.getElementsByTagName(keyName).item(0);
             Element eKey = (Element) key;
             value = eKey.getAttribute("value");
-//            System.out.println(eKey.getAttribute("value"));
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         } catch (SAXException e) {

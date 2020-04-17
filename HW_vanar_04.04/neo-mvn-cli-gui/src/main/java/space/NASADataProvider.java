@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NASADataProvider {
-//    private final static String ACCESS_KEY = "O07j4jScumz9is0SsljvW1ORhEQ8l4W4RN9o6zca";
+    //    private final static String ACCESS_KEY = "O07j4jScumz9is0SsljvW1ORhEQ8l4W4RN9o6zca";
 //    private final static String NEO_ENDPOINT = "https://api.nasa.gov/neo/rest/v1/feed";
-    private final static int ONE_MILLION = 1_000_000;
+//    private final static int ONE_MILLION = 1_000_000;
     private final static int ONE = 1;
     private final static byte INDEX_ZERO = 0;
 
-    public void getNeoAsteroids(String startDate, String endDate) throws IOException {
+    public List<Asteroid> getNeoAsteroids(String startDate, String endDate) throws IOException {
 // 1. connect to nasa API
         URL oracle = new URL(XMLConfigurationProvider.getValue("url", "nasa.xml") + "?start_date=" + startDate + "&end_date=" + endDate + "&api_key=" + XMLConfigurationProvider.getValue("key", "nasa.xml"));
         BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
@@ -52,7 +52,8 @@ public class NASADataProvider {
                 asteroids.add(new Asteroid(day, getMissDistance(data, day, j), getDiameter(data, day, j), getIsHazardous(data, day, j)));
             day = day.plusDays(ONE);
         }
-        printResult(asteroids);
+//        printResult(asteroids);
+        return asteroids;
     }
 
     private float getDiameter(JSONObject data, LocalDate date, int index) {
@@ -81,15 +82,15 @@ public class NASADataProvider {
                 .getFloat("kilometers");
     }
 
-    private void printResult(List<Asteroid> asteroids) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        for (Asteroid asteroid : asteroids) {
-            System.out.printf("%s - %4.1fmln km from earth, %.2fkm diameter, %s%n",
-                    asteroid.getDate().format(formatter),
-                    asteroid.getDistance() / ONE_MILLION, asteroid.getDiameter(),
-                    asteroid.getHazardous() ? "it is hazardous!" : "it's not hazardous!");
-        }
-    }
+//    private void printResult(List<Asteroid> asteroids) {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+//        for (Asteroid asteroid : asteroids) {
+//            System.out.printf("%s - %4.1fmln km from earth, %.2fkm diameter, %s%n",
+//                    asteroid.getDate().format(formatter),
+//                    asteroid.getDistance() / ONE_MILLION, asteroid.getDiameter(),
+//                    asteroid.getHazardous() ? "it is hazardous!" : "it's not hazardous!");
+//        }
+//    }
 }
 
 
