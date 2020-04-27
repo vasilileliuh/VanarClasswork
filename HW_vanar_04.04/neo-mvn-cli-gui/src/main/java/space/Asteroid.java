@@ -7,13 +7,13 @@ public class Asteroid {
     private LocalDate date;
     private Float distance;
     private Float diameter;
-    private Boolean hazardous;
+    private Boolean isHazardous;
 
-    public Asteroid(LocalDate date, Float distance, Float diameter, Boolean hazardous) {
+    public Asteroid(LocalDate date, Float distance, Float diameter, Boolean isHazardous) {
         this.date = date;
         this.distance = distance;
         this.diameter = diameter;
-        this.hazardous = hazardous;
+        this.isHazardous = isHazardous;
     }
 
     public LocalDate getDate() {
@@ -28,8 +28,8 @@ public class Asteroid {
         return diameter;
     }
 
-    public Boolean getHazardous() {
-        return hazardous;
+    public Boolean getIsHazardous() {
+        return isHazardous;
     }
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -40,7 +40,7 @@ public class Asteroid {
                 "date=" + date +
                 ", distance=" + distance +
                 ", diameter=" + diameter +
-                ", hazardous=" + hazardous +
+                ", hazardous=" + isHazardous +
                 '}';
     }
 }

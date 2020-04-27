@@ -21,6 +21,7 @@ public class CLIApplication {
             asteroids = new NASADataProvider().getNeoAsteroids(startDate, endDate);
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("An error has occurred.\nPlease enter dates in the correct format: yyyy-MM-dd.");
         }
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -28,7 +29,7 @@ public class CLIApplication {
             System.out.printf("%s - %4.1fmln km from earth, %.2fkm diameter, %s%n",
                     asteroid.getDate().format(formatter),
                     asteroid.getDistance() / ONE_MILLION, asteroid.getDiameter(),
-                    asteroid.getHazardous() ? "it is hazardous!" : "it's not hazardous!");
+                    asteroid.getIsHazardous() ? "it is hazardous!" : "it's not hazardous!");
         }
     }
 }

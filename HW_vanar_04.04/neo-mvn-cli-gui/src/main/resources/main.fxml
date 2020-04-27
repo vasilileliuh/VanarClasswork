@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<VBox prefHeight="427.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainController">
+<VBox prefHeight="430.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainController">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="322.0" prefWidth="694.0" VBox.vgrow="ALWAYS">
             <children>
-                <Button alignment="CENTER" layoutX="527.0" layoutY="385.0" mnemonicParsing="false" onAction="#getData"
-                        prefHeight="26.0" prefWidth="134.0" text="Get data"/>
-                <TextField fx:id="startDateInput" layoutX="15.0" layoutY="385.0" prefHeight="26.0" prefWidth="134.0"
-                           promptText="start date"/>
-                <TextField fx:id="endDateInput" layoutX="166.0" layoutY="385.0" prefHeight="26.0" prefWidth="134.0"
-                           promptText="end date"/>
-                <TextArea fx:id="textArea" layoutX="15.0" layoutY="14.0" prefHeight="355.0" prefWidth="647.0">
-                    <font>
-                        <Font size="18.0"/>
-                    </font>
-                </TextArea>
+                <Button alignment="CENTER" layoutX="524.0" layoutY="381.0" mnemonicParsing="false" onAction="#getData" prefHeight="26.0" prefWidth="131.0" stylesheets="@button.css" text="Get data" textFill="WHITE" />
+                <TextField fx:id="startDateInput" layoutX="17.0" layoutY="381.0" prefHeight="26.0" prefWidth="190.0" promptText="start date : YYYY-MM-DD" />
+                <TextField fx:id="endDateInput" layoutX="233.0" layoutY="381.0" prefHeight="26.0" prefWidth="190.0" promptText="end date : YYYY-MM-DD" />
+            <TableView fx:id="tableView" layoutX="18.0" prefHeight="364.0" prefWidth="656.0">
+                <columns>
+                    <TableColumn fx:id="date" minWidth="100.0" prefWidth="164.0" text="Date" />
+                    <TableColumn fx:id="diameter" prefWidth="164.0" text="Diameter" />
+                    <TableColumn fx:id="distance" prefWidth="164.0" text="Distance" />
+                    <TableColumn fx:id="hazardous" prefWidth="164.0" text="Hazard" />
+                </columns>
+            </TableView>
+            <ImageView fitHeight="131.0" fitWidth="134.0" layoutX="524.0" layoutY="216.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@unnamed.jpg" />
+               </image>
+            </ImageView>
             </children>
         </AnchorPane>
     </children>
