@@ -2,16 +2,22 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <VBox prefHeight="207.0" prefWidth="326.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="222.0" prefWidth="348.0" VBox.vgrow="ALWAYS">
       <children>
             <Button alignment="CENTER" defaultButton="true" layoutX="113.0" layoutY="147.0" mnemonicParsing="false" onAction="#getSecondWindow" prefHeight="26.0" prefWidth="99.0" text="Log in" />
-            <TextField layoutX="112.0" layoutY="41.0" prefHeight="26.0" prefWidth="179.0" promptText="user" />
-            <TextField layoutX="112.0" layoutY="84.0" prefHeight="26.0" prefWidth="179.0" promptText="password" />
-            <Label layoutX="37.0" layoutY="41.0" prefHeight="26.0" prefWidth="65.0" text="Username:" textAlignment="CENTER" />
-            <Label layoutX="37.0" layoutY="84.0" prefHeight="26.0" prefWidth="65.0" text="Password:" textAlignment="CENTER" />
+            <TextField fx:id="user" layoutX="112.0" layoutY="41.0" prefHeight="26.0" prefWidth="179.0" promptText="user" />
+            <TextField fx:id="password" layoutX="112.0" layoutY="84.0" prefHeight="26.0" prefWidth="179.0" promptText="password" />
+            <Label layoutX="25.0" layoutY="41.0" prefHeight="26.0" prefWidth="78.0" text="Username:" textAlignment="CENTER" />
+            <Label layoutX="25.0" layoutY="84.0" prefHeight="26.0" prefWidth="78.0" text="Password:" textAlignment="CENTER" />
+            <Label fx:id="error" layoutX="112.0" layoutY="116.0" prefHeight="26.0" prefWidth="179.0" text="" textAlignment="CENTER" textFill="#941b1b">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
       </children>
     </AnchorPane>
   </children>
