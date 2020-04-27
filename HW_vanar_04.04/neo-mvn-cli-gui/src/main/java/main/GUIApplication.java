@@ -20,13 +20,14 @@ public class GUIApplication extends Application {
 //        stage.setScene(new Scene(root));
 //        stage.show();
         scene = new Scene(loadFXML("/first"));
-        stage.setTitle("NASA NEO data");
         stage.setScene(scene);
+        stage.setTitle("NASA NEO data");
         stage.show();
     }
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+        scene.windowProperty().getValue().sizeToScene();
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
